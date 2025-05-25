@@ -1,15 +1,15 @@
+import 'package:flowerlly/views/screens/login_screen.dart';
 import 'package:flowerlly/views/screens/otp_screen.dart';
-import 'package:flowerlly/views/screens/singup_screen.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 140,
+                  height: 110,
                 ),
                 _logo,
                 SizedBox(
@@ -50,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
         right: 12,
       ),
       child: Container(
-        height: MediaQuery.of(context).size.height * 0.71,
+        height: MediaQuery.of(context).size.height * 0.75,
         width: double.infinity,
         decoration: BoxDecoration(
           color: Colors.white,
@@ -65,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 20,
             ),
             Text(
-              "Log in",
+              "Sign Up",
               style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
@@ -82,11 +82,11 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(
               height: 25,
             ),
-            _textForgetPassword,
+            _confirmPassword,
             SizedBox(
               height: 25,
             ),
-            _loginButton,
+            _signupButton,
             SizedBox(
               height: 20,
             ),
@@ -114,19 +114,18 @@ class _LoginScreenState extends State<LoginScreen> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("Don't have an account?"),
+        Text("Already have account?"),
         TextButton(
-          onPressed: () {
-            Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) {
-              return SignupScreen();
-            }));
-          },
-          child: Text(
-            "Sign up",
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-        )
+            onPressed: () {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) {
+                return LoginScreen();
+              }));
+            },
+            child: Text(
+              "Log in",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ))
       ],
     );
   }
@@ -240,28 +239,6 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget get _textForgetPassword {
-    return Padding(
-      padding: const EdgeInsets.only(right: 18),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Text(
-            "Forgot your Password?",
-            style: TextStyle(fontSize: 12, color: Colors.green[700]),
-          ),
-          Text(
-            " Click here",
-            style: TextStyle(
-                fontSize: 12,
-                color: Colors.green[700],
-                fontWeight: FontWeight.bold),
-          ),
-        ],
-      ),
-    );
-  }
-
   Widget get _email {
     return Padding(
       padding: const EdgeInsets.only(left: 15, right: 15),
@@ -292,6 +269,21 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+  Widget get _confirmPassword {
+    return Padding(
+      padding: const EdgeInsets.only(left: 15, right: 15),
+      child: SizedBox(
+        height: 50,
+        child: TextField(
+          decoration: InputDecoration(
+              labelText: "Confirm Password",
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
+        ),
+      ),
+    );
+  }
+
   Widget get _background {
     return Container(
       decoration: BoxDecoration(
@@ -305,7 +297,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget get _loginButton {
+  Widget get _signupButton {
     return Padding(
       padding: const EdgeInsets.only(left: 18, right: 18),
       child: ElevatedButton(
@@ -320,7 +312,7 @@ class _LoginScreenState extends State<LoginScreen> {
           }));
         },
         child: const Text(
-          "Log in",
+          "Sign Up",
           style: TextStyle(fontSize: 20),
         ),
       ),
